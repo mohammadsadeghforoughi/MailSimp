@@ -1,0 +1,62 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux x64
+            os: ubuntu-latest
+            artifact: MailSimp-linux-x64
+          - name: Windows x64
+            os: windows-latest
+            artifact: MailSimp-windows-x64
+          - name: macOS (Apple Silicon and Intel)
+            os: macos-latest
+            artifact: MailSimp-macos
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check JavaScript
+        run: npm test
+      - name: Build Linux packages
+        if: runner.os == 'Linux'
+        run: npm run pack:linux
+      - name: Build Windows package
+        if: runner.os == 'Windows'
+        run: npm run pack:win
+      - name: Build macOS packages
+        if: runner.os == 'macOS'
+        env:
+          CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+        run: npm run pack:mac
+      - name: Upload packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: |
+            release/MailSimp-*.AppImage
+            release/MailSimp-*.deb
+            release/MailSimp-*.exe
+            release/MailSimp-*.dmg
+            release/MailSimp-*.zip
+          if-no-files-found: error
+          retention-days: 14

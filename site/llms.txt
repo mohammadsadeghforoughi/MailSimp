@@ -1,0 +1,34 @@
+# MailSimp
+
+> MailSimp is a free, MIT-licensed, local-first desktop application for sending personalized HTML email campaigns through the user's own SMTP server.
+
+Official website: __SITE_URL__
+Source code: __REPOSITORY_URL__
+Latest downloads: __REPOSITORY_URL__/releases/latest
+Current version: __VERSION__
+
+## What MailSimp does
+
+- Imports recipients from XLSX and CSV spreadsheets.
+- Lets the user choose an email column and makes the other columns available as template variables.
+- Supports personalized subject lines and HTML bodies with {{variable}} syntax.
+- Includes English, Persian, and right-to-left email composition.
+- Connects to an SMTP server chosen and configured by the user.
+- Sends a real SMTP test message before a campaign.
+- Processes campaigns in batches of 20 with a configurable delay.
+- Stores recipients, templates, settings, campaign history, and delivery results locally in SQLite.
+
+## Platforms and downloads
+
+MailSimp publishes a portable x64 EXE for Windows, DMG and ZIP packages for Apple Silicon and Intel Macs, and x64 AppImage and Debian/Ubuntu DEB packages for Linux. Releases include SHA-256 checksums. macOS packages require Apple signing credentials to be signed and notarized.
+
+## Privacy and limitations
+
+MailSimp does not require a hosted account and does not provide a hosted sending service. SMTP credentials are stored in the local application database. Users are responsible for consent, unsubscribe handling, provider limits, anti-spam rules, privacy law compliance, and message content.
+
+## Primary documentation
+
+- README and setup: __REPOSITORY_URL__/blob/main/README.md
+- License: __REPOSITORY_URL__/blob/main/LICENSE
+- Release notes: __REPOSITORY_URL__/releases
+- Issue tracker: __REPOSITORY_URL__/issues

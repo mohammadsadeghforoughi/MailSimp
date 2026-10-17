@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MailSimp — Simple, local-first email campaigns</title>
+  <meta name="description" content="MailSimp is a free, open-source desktop app for importing spreadsheet contacts, personalizing HTML email, and sending through your own SMTP server.">
+  <meta name="keywords" content="open source email sender, desktop email campaign app, SMTP mailer, spreadsheet email personalization, MailSimp">
+  <meta name="author" content="NovaPay">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="theme-color" content="#101521">
+  <link rel="canonical" href="__SITE_URL__">
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="apple-touch-icon" href="assets/icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MailSimp">
+  <meta property="og:title" content="MailSimp — Email campaigns without the heavy tooling">
+  <meta property="og:description" content="Import recipients, personalize HTML email, and send through your own SMTP server. Free, open source, and local first.">
+  <meta property="og:url" content="__SITE_URL__">
+  <meta property="og:image" content="__SITE_URL__assets/screenshots/overview.png">
+  <meta property="og:image:alt" content="MailSimp desktop app overview">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MailSimp — Simple, local-first email campaigns">
+  <meta name="twitter:description" content="A free and open-source desktop app for personalized SMTP email campaigns.">
+  <meta name="twitter:image" content="__SITE_URL__assets/screenshots/overview.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "MailSimp",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Windows 10, Windows 11, macOS, Linux",
+        "softwareVersion": "__VERSION__",
+        "description": "A local-first desktop app for importing spreadsheet recipients, personalizing HTML email, and sending campaigns through an SMTP server.",
+        "url": "__SITE_URL__",
+        "downloadUrl": "__REPOSITORY_URL__/releases/latest",
+        "codeRepository": "__REPOSITORY_URL__",
+        "license": "https://opensource.org/license/mit",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "screenshot": [
+          "__SITE_URL__assets/screenshots/overview.png",
+          "__SITE_URL__assets/screenshots/recipients.png",
+          "__SITE_URL__assets/screenshots/composer.png"
+        ],
+        "featureList": [
+          "XLSX and CSV recipient import",
+          "Per-recipient template variables",
+          "English, Persian, and RTL email composition",
+          "SMTP test messages",
+          "Controlled batch sending",
+          "Local SQLite campaign history"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is MailSimp?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "MailSimp is a free, open-source Windows and Linux desktop app that imports recipients from spreadsheets and sends personalized HTML email through your own SMTP server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does MailSimp upload campaign data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No hosted MailSimp account or service is required. Recipients, templates, settings, and campaign history are stored in a local SQLite database on your computer."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which spreadsheet formats does MailSimp support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "MailSimp imports XLSX and CSV files. You choose the email column, and the remaining columns become personalization variables."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="#" aria-label="MailSimp home">
+      <img src="assets/icon.png" alt="" width="44" height="44">
+      <span>MailSimp</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#features">Features</a>
+      <a href="#screenshots">Screenshots</a>
+      <a href="#faq">FAQ</a>
+      <a href="__REPOSITORY_URL__">GitHub</a>
+    </nav>
+    <a class="button button-small" href="__REPOSITORY_URL__/releases/latest">Download</a>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> Free &amp; open source · v__VERSION__</p>
+        <h1>Email campaigns,<br><em>made simple.</em></h1>
+        <p class="lede">Import a spreadsheet. Personalize your HTML. Send through your own SMTP server. MailSimp keeps the workflow focused and your campaign data on your computer.</p>
+        <div class="hero-actions">
+          <a class="button button-primary recommended-download" href="__REPOSITORY_URL__/releases/latest">Download MailSimp</a>
+          <a class="button button-ghost" href="__REPOSITORY_URL__">View source <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="platform-note">Windows, macOS, and Linux · MIT licensed</p>
+      </div>
+      <div class="hero-visual" aria-label="MailSimp app preview">
+        <div class="shape shape-one"></div>
+        <div class="shape shape-two"></div>
+        <figure class="app-window">
+          <div class="window-bar"><i></i><i></i><i></i><span>MailSimp</span></div>
+          <img src="assets/screenshots/overview.png" alt="MailSimp overview showing recipient, delivery, and campaign statistics" width="1320" height="784">
+        </figure>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="Product highlights">
+      <div><strong>No account</strong><span>Install and start locally</span></div>
+      <div><strong>Your SMTP</strong><span>Use the provider you trust</span></div>
+      <div><strong>Your data</strong><span>Stored in local SQLite</span></div>
+      <div><strong>MIT licensed</strong><span>Read, change, and share the code</span></div>
+    </section>
+
+    <section class="section how" id="how-it-works">
+      <div class="section-heading">
+        <p class="kicker">A short path from list to sent</p>
+        <h2>Three deliberate steps.<br>No marketing maze.</h2>
+      </div>
+      <ol class="steps">
+        <li><span>01</span><div><h3>Bring your list</h3><p>Import XLSX or CSV, choose the email column, and keep every other field for personalization.</p></div></li>
+        <li><span>02</span><div><h3>Make it personal</h3><p>Build bilingual HTML email and place spreadsheet values in the subject or body with simple <code>{{variables}}</code>.</p></div></li>
+        <li><span>03</span><div><h3>Send with control</h3><p>Test your SMTP configuration, confirm the audience, and process delivery in paced batches of 20.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="section features-section" id="features">
+      <div class="section-heading compact">
+        <p class="kicker">Useful by design</p>
+        <h2>The essentials for a careful send.</h2>
+        <p>MailSimp concentrates on the parts that matter: clean imports, flexible templates, controlled delivery, and inspectable results.</p>
+      </div>
+      <div class="feature-grid">
+        <article><span class="feature-icon">↥</span><h3>Spreadsheet import</h3><p>Preview columns from XLSX and CSV files, validate addresses, and skip duplicates.</p></article>
+        <article><span class="feature-icon">{ }</span><h3>Personalization</h3><p>Use any spreadsheet header as a subject or HTML variable, including Unicode names.</p></article>
+        <article><span class="feature-icon">文</span><h3>Bilingual composer</h3><p>Write English or Persian email with RTL support and a responsive starter template.</p></article>
+        <article><span class="feature-icon">◎</span><h3>Live preview</h3><p>Inspect the email while you work before anything reaches a recipient.</p></article>
+        <article><span class="feature-icon">⌁</span><h3>Provider independent</h3><p>Connect your own SMTP service and send a real test message before a campaign.</p></article>
+        <article><span class="feature-icon">✓</span><h3>Delivery records</h3><p>Review campaign history plus individual success and failure details in the app.</p></article>
+      </div>
+    </section>
+
+    <section class="section screenshots-section" id="screenshots">
+      <div class="section-heading compact">
+        <p class="kicker">The actual desktop app</p>
+        <h2>See every step before you install.</h2>
+      </div>
+      <div class="shot-tabs" role="tablist" aria-label="App screenshots">
+        <button class="shot-tab active" role="tab" aria-selected="true" data-shot="overview">Overview</button>
+        <button class="shot-tab" role="tab" aria-selected="false" data-shot="recipients">Recipients</button>
+        <button class="shot-tab" role="tab" aria-selected="false" data-shot="composer">Composer</button>
+      </div>
+      <figure class="screenshot-frame">
+        <img id="product-shot" src="assets/screenshots/overview.png" alt="MailSimp overview screen" width="1320" height="784">
+        <figcaption id="shot-caption">See recipient counts, delivery totals, and recent campaigns at a glance.</figcaption>
+      </figure>
+    </section>
+
+    <section class="section download-section" id="download">
+      <div class="download-copy">
+        <p class="kicker">Download MailSimp v__VERSION__</p>
+        <h2>Ready when your next message is.</h2>
+        <p>Choose a Windows, macOS, or Linux package. Every GitHub release includes SHA-256 checksums.</p>
+        <a href="__REPOSITORY_URL__/releases/latest">Release notes and checksums <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="download-list">
+        <a class="download-card windows-download" href="__REPOSITORY_URL__/releases/latest/download/MailSimp-__VERSION__-Windows-x64.exe">
+          <span class="platform-icon">▦</span><span><strong>Windows</strong><small>Portable .exe · x64</small></span><b>↓</b>
+        </a>
+        <a class="download-card mac-download" href="__REPOSITORY_URL__/releases/latest/download/MailSimp-__VERSION__-macOS-arm64.dmg">
+          <span class="platform-icon">●</span><span><strong>macOS</strong><small>Apple Silicon · .dmg</small></span><b>↓</b>
+        </a>
+        <a class="download-card" href="__REPOSITORY_URL__/releases/latest/download/MailSimp-__VERSION__-macOS-x64.dmg">
+          <span class="platform-icon">○</span><span><strong>macOS</strong><small>Intel · .dmg</small></span><b>↓</b>
+        </a>
+        <a class="download-card linux-download" href="__REPOSITORY_URL__/releases/latest/download/MailSimp-__VERSION__-Linux-x86_64.AppImage">
+          <span class="platform-icon">◆</span><span><strong>Linux</strong><small>AppImage · x64</small></span><b>↓</b>
+        </a>
+        <a class="download-card" href="__REPOSITORY_URL__/releases/latest/download/MailSimp-__VERSION__-Linux-x86_64.deb">
+          <span class="platform-icon">◫</span><span><strong>Debian / Ubuntu</strong><small>.deb package · x64</small></span><b>↓</b>
+        </a>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq">
+      <div class="section-heading compact"><p class="kicker">Clear answers</p><h2>Before you send.</h2></div>
+      <div class="faq-list">
+        <details><summary>What is MailSimp?<span>+</span></summary><p>MailSimp is a free, open-source Windows and Linux desktop app for importing spreadsheet recipients and sending personalized HTML email through your own SMTP server.</p></details>
+        <details><summary>Does MailSimp upload my recipients or campaigns?<span>+</span></summary><p>No hosted MailSimp account or service is required. Recipients, templates, settings, and campaign history are stored in a local SQLite database on your computer.</p></details>
+        <details><summary>Which file formats can I import?<span>+</span></summary><p>MailSimp imports XLSX and CSV files. You select the email column; every remaining column is available as personalization data.</p></details>
+        <details><summary>Can MailSimp guarantee legal compliance or inbox placement?<span>+</span></summary><p>No. You are responsible for consent, unsubscribe handling, applicable anti-spam and privacy rules, provider limits, and the content you send.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="wordmark" href="#"><img src="assets/icon.png" alt="" width="38" height="38"><span>MailSimp</span></a>
+    <p>Simple email campaigns, sent your way.</p>
+    <div><a href="__REPOSITORY_URL__">Source</a><a href="__REPOSITORY_URL__/issues">Issues</a><a href="__REPOSITORY_URL__/blob/main/LICENSE">MIT License</a></div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

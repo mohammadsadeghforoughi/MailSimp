@@ -1,0 +1,17 @@
+{
+  "name": "MailSimp",
+  "short_name": "MailSimp",
+  "description": "A simple, local-first desktop app for personalized email campaigns.",
+  "start_url": "__SITE_URL__",
+  "display": "standalone",
+  "background_color": "#fbfaf7",
+  "theme_color": "#101521",
+  "icons": [
+    {
+      "src": "assets/icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

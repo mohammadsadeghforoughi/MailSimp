@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' data:; script-src 'self'">
+  <title>MailSimp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><img class="brand-mark" src="../../assets/icon.png" alt=""><span>MailSimp</span></div>
+    <nav>
+      <button class="nav-item active" data-page="dashboard"><span>⌂</span>Overview</button>
+      <button class="nav-item" data-page="recipients"><span>♙</span>Recipients</button>
+      <button class="nav-item" data-page="composer"><span>✎</span>Composer</button>
+      <button class="nav-item" data-page="history"><span>◷</span>History</button>
+      <button class="nav-item" data-page="settings"><span>⚙</span>SMTP Settings</button>
+    </nav>
+    <div class="sidebar-foot">
+      <div class="status-dot"></div>
+      <div><strong>Local & private</strong><small>Data stays on this device</small></div>
+    </div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div><h1 id="page-title">Overview</h1><p id="page-subtitle">Everything you need to run your next campaign.</p></div>
+      <button class="btn primary" data-go="composer">Create campaign</button>
+    </header>
+
+    <section id="dashboard" class="page active">
+      <div class="hero">
+        <div><span class="eyebrow">LIGHTWEIGHT EMAIL DESKTOP APP</span><h2>Send thoughtful email,<br>without the heavy tooling.</h2><p>Import recipients, craft bilingual templates, and deliver safely in controlled batches of 20.</p><div class="hero-actions"><button class="btn primary" data-go="recipients">Import recipients</button><button class="btn ghost" data-go="settings">Configure SMTP</button></div></div>
+        <div class="hero-art"><div class="mail-card"><span class="mail-icon">✦</span><div><b>Ready to send</b><small>Excel → Template → Queue</small></div></div><div class="orbit one"></div><div class="orbit two"></div></div>
+      </div>
+      <div class="stats-grid">
+        <article class="stat"><div class="stat-icon purple">♙</div><div><span>Recipients</span><strong id="stat-recipients">0</strong><small>saved locally</small></div></article>
+        <article class="stat"><div class="stat-icon green">✓</div><div><span>Delivered</span><strong id="stat-delivered">0</strong><small>across all campaigns</small></div></article>
+        <article class="stat"><div class="stat-icon amber">◷</div><div><span>Campaigns</span><strong id="stat-campaigns">0</strong><small>in send history</small></div></article>
+      </div>
+      <div class="panel"><div class="panel-head"><div><h3>Recent campaigns</h3><p>Your latest delivery activity</p></div><button class="link-btn" data-go="history">View all →</button></div><div id="recent-campaigns" class="campaign-list empty-state">No campaigns yet.</div></div>
+    </section>
+
+    <section id="recipients" class="page">
+      <div class="two-col import-layout">
+        <div class="panel">
+          <div class="panel-head"><div><h3>Import from spreadsheet</h3><p>Supports .xlsx and .csv</p></div></div>
+          <button id="choose-file" class="drop-zone"><span class="upload-icon">⇧</span><strong>Choose an Excel file</strong><small>Select the email column; every other column is imported as personalization data</small></button>
+          <div id="file-config" class="file-config hidden">
+            <div class="file-chip"><span>▦</span><div><strong id="file-name"></strong><small id="file-meta"></small></div></div>
+            <label>Email column<select id="email-column"></select></label>
+            <div class="tip import-tip"><b>All columns become variables</b><p>Names, gender, Persian headers, and any other columns will be stored for each recipient and available in the template.</p></div>
+            <div id="sheet-preview" class="sheet-preview"></div>
+            <button id="import-file" class="btn primary full">Import valid emails</button>
+          </div>
+        </div>
+        <div class="panel compact-panel">
+          <div class="panel-head"><div><h3>Add manually</h3><p>Add one address at a time</p></div></div>
+          <div class="inline-form"><input id="manual-email" type="email" placeholder="person@example.com"><button id="add-email" class="btn dark">Add</button></div>
+          <div class="tip"><b>Tip</b><p>Duplicate and invalid email addresses are automatically skipped.</p></div>
+        </div>
+      </div>
+      <div class="panel table-panel"><div class="panel-head"><div><h3>Send list <span id="recipient-badge" class="badge">0</span></h3><p>Recipients and their imported personalization data</p></div><button id="clear-recipients" class="btn danger-subtle">Clear list</button></div><div class="table-wrap"><table><thead><tr><th>Email address</th><th>Personalization</th><th>Source</th><th>Added</th><th></th></tr></thead><tbody id="recipients-table"></tbody></table></div></div>
+    </section>
+
+    <section id="composer" class="page">
+      <div class="composer-grid">
+        <div class="compose-stack">
+          <div class="panel">
+            <div class="panel-head"><div><h3>Message</h3><p>Build an email-safe bilingual template</p></div><button id="save-template" class="btn ghost small">Save draft</button></div>
+            <label>Subject <span class="label-hint">variables supported</span><input id="mail-subject" placeholder="Hello {{نام}} — a message for you"></label>
+            <label>Public logo URL <span class="label-hint">S3, CDN, or another HTTPS URL</span><input id="logo-url" type="url" placeholder="https://cdn.example.com/logo.png"></label>
+            <div class="editor-tabs"><button class="editor-tab active" data-editor="html">HTML template</button><button class="editor-tab" data-editor="agent">Agent prompt</button></div>
+            <div id="html-editor-panel"><textarea id="mail-html" class="code-editor" spellcheck="false"></textarea><div class="variable-help"><span>Available variables</span><div id="available-variables" class="variable-list"></div><small>Click a variable to copy it. Variables work in both the subject and HTML.</small></div></div>
+            <div id="agent-editor-panel" class="hidden"><div class="prompt-box"><div class="prompt-lock"><span>PRE-DEFINED INSTRUCTIONS</span><button id="copy-prompt" class="link-btn">Copy full prompt</button></div><pre id="prompt-prefix"></pre><label>Continue the prompt with your campaign requirements<textarea id="prompt-continuation" placeholder="Describe the company, tone, sections, call-to-action, English/Persian content, colors…"></textarea></label></div></div>
+          </div>
+          <div class="send-bar"><div><b id="send-count">0 recipients</b><span>Sent in batches of 20</span></div><button id="send-campaign" class="btn primary">Send campaign</button></div>
+          <div id="send-progress" class="panel progress-panel hidden"><div class="progress-copy"><b id="progress-title">Sending…</b><span id="progress-text">Preparing queue</span></div><div class="progress-track"><i id="progress-fill"></i></div></div>
+        </div>
+        <div class="preview-panel"><div class="preview-head"><div><b>Live preview</b><span>Desktop</span></div><button id="refresh-preview" class="icon-button" title="Refresh preview">↻</button></div><iframe id="mail-preview" sandbox="allow-same-origin"></iframe></div>
+      </div>
+    </section>
+
+    <section id="history" class="page">
+      <div class="panel table-panel"><div class="panel-head"><div><h3>Campaign history</h3><p>Every send is recorded in your local SQLite database</p></div><button id="refresh-history" class="btn ghost small">Refresh</button></div><div class="table-wrap"><table><thead><tr><th>Subject</th><th>Started</th><th>Total</th><th>Sent</th><th>Failed</th><th>Status</th><th></th></tr></thead><tbody id="history-table"></tbody></table></div></div>
+      <div id="delivery-panel" class="panel hidden"><div class="panel-head"><div><h3>Delivery details</h3><p>Per-recipient results for the selected campaign</p></div><button id="close-deliveries" class="icon-button">×</button></div><div class="table-wrap"><table><thead><tr><th>Email</th><th>Status</th><th>Time</th><th>Error</th></tr></thead><tbody id="deliveries-table"></tbody></table></div></div>
+    </section>
+
+    <section id="settings" class="page">
+      <div class="settings-grid">
+        <div class="panel">
+          <div class="panel-head"><div><h3>SMTP server</h3><p>Your password is stored only in the local app database</p></div></div>
+          <div class="form-grid"><label class="span-2">SMTP host<input id="smtp-host" placeholder="smtp.example.com"></label><label>Port<input id="smtp-port" type="number" value="587"></label><label>Encryption<select id="smtp-secure"><option value="false">STARTTLS / None</option><option value="true">SSL / TLS</option></select></label><label>Username<input id="smtp-user" autocomplete="off"></label><label>Password<input id="smtp-pass" type="password" autocomplete="new-password"></label></div>
+          <hr>
+          <div class="form-grid"><label>Sender name<input id="from-name" placeholder="Your Company"></label><label>Sender email<input id="from-email" type="email" placeholder="hello@example.com"></label><label>Reply-to <span class="label-hint">optional</span><input id="reply-to" type="email"></label><label>Seconds between batches<input id="batch-delay" type="number" min="0" value="5"></label></div>
+          <div class="settings-actions"><button id="save-settings" class="btn primary">Save settings</button><span id="settings-saved" class="saved-text"></span></div>
+        </div>
+        <div class="panel test-card"><div class="test-visual">↗</div><h3>Test your connection</h3><p>Save settings, then send a real test message to confirm authentication and delivery.</p><label>Send test email to<input id="test-email" type="email" placeholder="you@example.com"></label><button id="test-smtp" class="btn dark full">Send test email</button><div id="test-result" class="test-result hidden"></div></div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast"></div>
+  <div id="confirm-modal" class="modal-backdrop hidden"><div class="modal"><div class="modal-icon">↗</div><h3>Send this campaign?</h3><p id="confirm-copy"></p><div class="modal-actions"><button id="cancel-send" class="btn ghost">Cancel</button><button id="confirm-send" class="btn primary">Start sending</button></div></div></div>
+  <script src="app.js"></script>
+</body>
+</html>

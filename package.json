@@ -1,0 +1,67 @@
+{
+  "name": "mailsimp",
+  "version": "1.1.0",
+  "description": "A simple, local-first desktop app for sending personalized email campaigns through your own SMTP server.",
+  "private": true,
+  "main": "src/main.js",
+  "author": {
+    "name": "NovaPay",
+    "email": "support@novapay.ir"
+  },
+  "homepage": "https://novapay.ir",
+  "desktopName": "MailSimp",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "check": "node --check src/main.js && node --check src/preload.js && node --check src/renderer/app.js && node --check site/app.js && node --check scripts/build-site.js",
+    "test": "npm run check",
+    "site:build": "node scripts/build-site.js",
+    "pack:linux": "electron-builder --linux AppImage deb",
+    "pack:deb": "electron-builder --linux deb",
+    "pack:win": "electron-builder --win portable",
+    "pack:mac": "electron-builder --mac --x64 --arm64",
+    "dist": "electron-builder --linux AppImage deb --win portable"
+  },
+  "dependencies": {
+    "nodemailer": "10.1.2",
+    "read-excel-file": "9.3.12"
+  },
+  "devDependencies": {
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.novapay.mailsimp",
+    "productName": "MailSimp",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "target": ["AppImage"],
+      "category": "Office",
+      "syncDesktopName": true,
+      "icon": "assets/icon.png",
+      "artifactName": "MailSimp-${version}-Linux-x86_64.${ext}"
+    },
+    "win": {
+      "target": ["portable"],
+      "icon": "assets/icon.png",
+      "artifactName": "MailSimp-${version}-Windows-x64.${ext}"
+    },
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.business",
+      "icon": "assets/icon.png",
+      "artifactName": "MailSimp-${version}-macOS-${arch}.${ext}"
+    }
+  }
+}
