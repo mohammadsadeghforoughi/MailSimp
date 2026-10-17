@@ -19,11 +19,11 @@
     "check": "node --check src/main.js && node --check src/preload.js && node --check src/renderer/app.js && node --check site/app.js && node --check scripts/build-site.js",
     "test": "npm run check",
     "site:build": "node scripts/build-site.js",
-    "pack:linux": "electron-builder --linux AppImage deb",
-    "pack:deb": "electron-builder --linux deb",
-    "pack:win": "electron-builder --win portable",
-    "pack:mac": "electron-builder --mac --x64 --arm64",
-    "dist": "electron-builder --linux AppImage deb --win portable"
+    "pack:linux": "electron-builder --linux AppImage deb --publish never",
+    "pack:deb": "electron-builder --linux deb --publish never",
+    "pack:win": "electron-builder --win portable --publish never",
+    "pack:mac": "electron-builder --mac --x64 --arm64 --publish never",
+    "dist": "electron-builder --linux AppImage deb --win portable --publish never"
   },
   "dependencies": {
     "nodemailer": "10.1.2",
